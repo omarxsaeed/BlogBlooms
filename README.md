@@ -1,2 +1,2 @@
 # BlogBlooms
-ITI project for node.js and MongoDB course
+ITI project using node.js, express and MongoDB
