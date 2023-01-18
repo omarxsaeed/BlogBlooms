@@ -1,0 +1,29 @@
+<!DOCTYPE html>
+<html lang="en">
+    <head>
+        <%- include("./../partials/head.ejs") %>
+    </head>
+    <body>
+        <header><%- include("./../partials/header") %></header>
+
+        <div class="container">
+            <h1 class="mb-4">Blog Articles</h1>
+            <a href="/blogs/new" class="btn btn-success">New Blog</a>
+
+            <% blogs.forEach(blog => { %>
+            <div class="card mt-4">
+                <img src="https://via.placeholder.com/468x60" class="card-img-top" alt="..." />
+                <div class="card-body">
+                    <h5 class="card-title"><%= blog.title %></h5>
+                    <div class="card-subtitle text-muted mb-2">
+                        Author: <%= blog.author.name %>, <%= blog.createdAt.toLocaleDateString() %>
+                    </div>
+                    <p class="card-text"><%= blog.body %></p>
+                    <a href="blogs/<%= blog.slug %>" class="btn btn-primary">Read More</a>
+                </div>
+            </div>
+            <% }) %>
+        </div>
+        <script src=" /js/bootstrap.bundle.min.js"></script>
+    </body>
+</html>
