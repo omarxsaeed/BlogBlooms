@@ -15,10 +15,21 @@ async function searchBlogs(searchParam, paramData) {
         res = await Blog.find({ tags: paramData });
     } else if (searchParam === "slug") {
         res = await Blog.findOne({ slug: paramData });
+    } else if (searchParam === "id") {
+        res = await Blog.findById(paramData);
     } else {
         res = await Blog.find().sort({ createdAt: "desc" });
     }
     return res;
 }
 
-module.exports = { addBlog, searchBlogs };
+async function deleteBlog(id) {
+    let res = Blog.findByIdAndRemove(id);
+    return res;
+}
+
+async function saveBLog(blog) {
+    return blog.save();
+}
+
+module.exports = { addBlog, searchBlogs, deleteBlog, saveBLog };

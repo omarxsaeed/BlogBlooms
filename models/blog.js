@@ -4,7 +4,7 @@ const slugify = require("slugify");
 const blogSchema = new mongoose.Schema({
     title: { type: String, required: true },
     body: { type: String, required: true },
-    photo: { type: String, default: "https://via.placeholder.com/468x60" },
+    image: { type: String, default: "https://via.placeholder.com/468x60" },
     author: {
         id: {
             type: mongoose.Schema.Types.ObjectId,

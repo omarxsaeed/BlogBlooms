@@ -9,8 +9,11 @@
         <div class="container">
             <h1 class="mb-1"><%= blog.title %></h1>
             <div class="text-muted mb-2"><%= blog.createdAt.toLocaleDateString() %></div>
-            <!-- <p class="text-muted"></p> -->
+            <img src="<%= blog.image %>" class="card-img-top" alt="..." />
+
+            <p class="text-muted"><%= blog.body %></p>
             <a href="/" class="btn btn-secondary">Home</a>
+            <a href="/blogs/edit/<%= blog.id %>" class="btn btn-info">Edit</a>
         </div>
 
         <script src="/js/bootstrap.bundle.min.js"></script>

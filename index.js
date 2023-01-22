@@ -5,6 +5,7 @@ if (process.env.NODE_ENV !== "production") {
 const path = require("path");
 const express = require("express");
 const passport = require("passport");
+const multer = require("multer");
 const mongoose = require("mongoose");
 const flash = require("express-flash");
 const session = require("express-session");
@@ -32,7 +33,7 @@ app.use(express.urlencoded({ extended: true }));
 app.use(passport.initialize());
 app.use(passport.session());
 app.use(methodOverride("_method"));
-app.use(express.static("assets"));
+app.use("/assets", express.static("assets"));
 app.use("/css", express.static(path.join(__dirname, "node_modules/bootstrap/dist/css")));
 app.use("/js", express.static(path.join(__dirname, "node_modules/bootstrap/dist/js")));
 app.use("/register", registerRoute);
@@ -56,8 +57,12 @@ app.get("/", async (req, res) => {
 });
 
 app.delete("/logout", (req, res) => {
-    req.logOut();
-    res.redirect("/login");
+    req.logout(function (err) {
+        if (err) {
+            return next(err);
+        }
+        res.redirect("/login");
+    });
 });
 
 app.listen(port, () => console.log(`Example app listening on port ${port}!`));
