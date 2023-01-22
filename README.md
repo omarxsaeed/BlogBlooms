@@ -1,2 +1,2 @@
 # BlogBlooms
-ITI project using node.js, express and MongoDB
+ITI project, a blog website build using node.js, express and MongoDB and Bootstrap
